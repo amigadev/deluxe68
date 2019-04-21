@@ -59,7 +59,11 @@ Build {
         "tests/d68test.cpp",
         "tests/tokenizer_test.cpp",
         "tests/regsave.cpp",
-        "external/gtest/googletest/src/gtest-all.cc" },
+        "external/gtest/googletest/src/gtest-all.cc"
+      },
+      Libs = {
+        { "pthread", Config = "linux-*" }
+      }
     }
     Default(deluxeTest)
   end,
@@ -78,5 +82,12 @@ Build {
       Tools = { "clang-osx" },
       DefaultOnHost = "macosx",
     },
+
+    Config {
+      Name = "linux-clang",
+      Inherit = common,
+      Tools = { "clang" },
+      DefaultOnHost = "linux"
+    }
   },
 }
